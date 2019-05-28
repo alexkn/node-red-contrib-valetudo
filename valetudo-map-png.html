@@ -1,0 +1,71 @@
+<script type="text/javascript">
+    RED.nodes.registerType('valetudo-map-png',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            drawPath: {value:true},
+            drawCharger: {value:true},
+            drawRobot: {value:true},
+            scale: {value:4},
+            minMillisecondsBetweenMapUpdates: {value:2000},
+            crop_x1: {value:null},
+            crop_x2: {value:null},
+            crop_y1: {value:null},
+            crop_y2: {value:null}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"valetudo-map-png";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="valetudo-map-png">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-drawPath"><i class="icon-tag"></i> draw Path</label>
+        <input type="checkbox" id="node-input-drawPath" placeholder="draw Path">
+    </div>
+    <div class="form-row">
+        <label for="node-input-drawCharger"><i class="icon-tag"></i> draw Charger</label>
+        <input type="checkbox" id="node-input-drawCharger" placeholder="draw Charger">
+    </div>
+    <div class="form-row">
+        <label for="node-input-drawRobot"><i class="icon-tag"></i> draw Robot</label>
+        <input type="checkbox" id="node-input-drawRobot" placeholder="draw Robot">
+    </div>
+    <div class="form-row">
+        <label for="node-input-scale"><i class="icon-tag"></i> Scale</label>
+        <input type="number" id="node-input-scale" placeholder="Scale">
+    </div>
+    <div class="form-row">
+        <label for="node-input-minMillisecondsBetweenMapUpdates"><i class="icon-tag"></i> minMillisecondsBetweenMapUpdates</label>
+        <input type="number" id="node-input-minMillisecondsBetweenMapUpdates" placeholder="minMillisecondsBetweenMapUpdates">
+    </div>
+    <div class="form-row">
+        <label for="node-input-crop_x1"><i class="icon-tag"></i> Crop x1</label>
+        <input type="number" id="node-input-crop_x1" placeholder="Crop x1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-crop_x2"><i class="icon-tag"></i> Crop x2</label>
+        <input type="number" id="node-input-crop_x2" placeholder="Crop x2">
+    </div>
+    <div class="form-row">
+        <label for="node-input-crop_y1"><i class="icon-tag"></i> Crop y1</label>
+        <input type="number" id="node-input-crop_y1" placeholder="Crop y1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-crop_y2"><i class="icon-tag"></i> Crop y2</label>
+        <input type="number" id="node-input-crop_y2" placeholder="Crop y2">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="valetudo-map-png">
+    <p>A simple node that converts the message payloads into into a map png</p>
+</script>

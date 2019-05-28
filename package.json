@@ -1,0 +1,19 @@
+{
+  "name": "node-red-contrib-valetudo",
+  "version": "0.0.1",
+  "description": "",
+  "main": "none",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexander Knöbel <alex-git@knoebel.info>",
+  "license": "Apache-2.0",
+  "node-red": {
+    "nodes": {
+      "valetudo-map-png": "valetudo-map-png.js"
+    }
+  },
+  "dependencies": {
+    "jimp": "^0.6.4"
+  }
+}
