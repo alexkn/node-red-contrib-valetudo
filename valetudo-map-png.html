@@ -8,7 +8,7 @@
             drawCharger: {value:true},
             drawRobot: {value:true},
             scale: {value:4},
-            minMillisecondsBetweenMapUpdates: {value:2000},
+            defer: {value:2000},
             crop_x1: {value:null},
             crop_x2: {value:null},
             crop_y1: {value:null},
@@ -29,24 +29,24 @@
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
-        <label for="node-input-drawPath"><i class="fa fa-level-up"></i> draw&nbsp;Path</label>
-        <input type="checkbox" id="node-input-drawPath" placeholder="draw Path">
+        <label for="node-input-drawPath"><i class="fa fa-level-up"></i> Draw&nbsp;Path</label>
+        <input type="checkbox" id="node-input-drawPath" placeholder="Draw Path">
     </div>
     <div class="form-row">
-        <label for="node-input-drawCharger"><i class="fa fa-plug"></i> draw&nbsp;Charger</label>
-        <input type="checkbox" id="node-input-drawCharger" placeholder="draw Charger">
+        <label for="node-input-drawCharger"><i class="fa fa-plug"></i> Draw&nbsp;Charger</label>
+        <input type="checkbox" id="node-input-drawCharger" placeholder="Draw Charger">
     </div>
     <div class="form-row">
-        <label for="node-input-drawRobot"><i class="fa fa-circle-o"></i> draw&nbsp;Robot</label>
-        <input type="checkbox" id="node-input-drawRobot" placeholder="draw Robot">
+        <label for="node-input-drawRobot"><i class="fa fa-circle-o"></i> Draw&nbsp;Robot</label>
+        <input type="checkbox" id="node-input-drawRobot" placeholder="Draw Robot">
     </div>
     <div class="form-row">
         <label for="node-input-scale"><i class="fa fa-expand"></i> Scale</label>
         <input type="number" id="node-input-scale" placeholder="Scale">
     </div>
     <div class="form-row">
-        <label for="node-input-minMillisecondsBetweenMapUpdates"><i class="fa fa-clock-o"></i> Timeout</label>
-        <input type="number" id="node-input-minMillisecondsBetweenMapUpdates" placeholder="minMillisecondsBetweenMapUpdates">
+        <label for="node-input-defer"><i class="fa fa-clock-o"></i> Defer</label>
+        <input type="number" id="node-input-defer" placeholder="defer">
     </div>
     <div class="form-row">
         <label for="node-input-crop_x1"><i class="fa fa-crop"></i> Crop x1</label>
@@ -68,4 +68,14 @@
 
 <script type="text/x-red" data-help-name="valetudo-map-png">
     <p>Convert valetudo map_data (sent via mqtt) to a png image.</p>
+
+    <p><b>Draw ...</b> selects the elements to be drawn.</p>
+
+    <p><b>Scale</b> changes the size of the robot and charger.</p>
+
+    <p>Setting <b>Defer</b> to a value > <code>0</code> throttles the map drawing to one per configured interval in milliseconds.</p>
+
+    <p>With <b>Crop ...</b> values the map can be cropped to certain bounds.<br/>
+       The values ​​refer to the pixel values ​​in the mapdata and not to zone coordinates.<br/>
+       If the settings ​​are not specified, the whole map will be rendered as before.</p>
 </script>

@@ -14,8 +14,8 @@ module.exports = function(RED) {
         if(parseInt(config.scale)) {
             settings.scale = parseInt(config.scale);
         }
-        if(parseInt(config.minMillisecondsBetweenMapUpdates)) {
-            settings.minMillisecondsBetweenMapUpdates = parseInt(config.minMillisecondsBetweenMapUpdates);
+        if(parseInt(config.defer)) {
+            settings.defer = parseInt(config.defer);
         }
         if(parseInt(config.crop_x1)) {
             settings.crop_x1 = parseInt(config.crop_x1);
@@ -32,7 +32,7 @@ module.exports = function(RED) {
 
         node.on('input', function(msg) {
             const now = new Date();
-            if(now - settings.minMillisecondsBetweenMapUpdates > lastMapDraw) {
+            if(now - settings.defer > lastMapDraw) {
                 lastMapDraw = now;
                 DRAW_MAP_PNG(
                     {
