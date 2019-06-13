@@ -1,12 +1,20 @@
 {
   "name": "node-red-contrib-valetudo",
   "version": "0.0.1",
-  "description": "",
+  "description": "Node-RED-nodes for valetudo",
   "main": "none",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alexander Knöbel <alex-git@knoebel.info>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexkn/node-red-contrib-valetudo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alexkn/node-red-contrib-valetudo/issues"
+  },
+  "homepage": "https://github.com/alexkn/node-red-contrib-valetudo",
   "license": "Apache-2.0",
   "node-red": {
     "nodes": {
