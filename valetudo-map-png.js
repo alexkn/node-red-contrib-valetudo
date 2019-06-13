@@ -17,17 +17,17 @@ module.exports = function(RED) {
         if(parseInt(config.defer)) {
             settings.defer = parseInt(config.defer);
         }
-        if(parseInt(config.crop_x1)) {
-            settings.crop_x1 = parseInt(config.crop_x1);
+        if(parseInt(config.cropX1)) {
+            settings.crop_x1 = parseInt(config.cropX1);
         }
-        if(parseInt(config.crop_x2)) {
-            settings.crop_x2 = parseInt(config.crop_x2);
+        if(parseInt(config.cropX2)) {
+            settings.crop_x2 = parseInt(config.cropX2);
         }
-        if(parseInt(config.crop_y1)) {
-            settings.crop_y1 = parseInt(config.crop_y1);
+        if(parseInt(config.cropY1)) {
+            settings.crop_y1 = parseInt(config.cropY1);
         }
-        if(parseInt(config.crop_y2)) {
-            settings.crop_y2 = parseInt(config.crop_y2);
+        if(parseInt(config.cropY2)) {
+            settings.crop_y2 = parseInt(config.cropY2);
         }
 
         node.on('input', function(msg) {
