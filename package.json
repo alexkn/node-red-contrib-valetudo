@@ -19,7 +19,8 @@
   "keywords": [ "node-red" ],
   "node-red": {
     "nodes": {
-      "valetudo-map-png": "valetudo-map-png.js"
+      "valetudo-map-png": "valetudo-map-png.js",
+      "valetudo-parse-binmap": "valetudo-parse-binmap.js"
     }
   },
   "dependencies": {
