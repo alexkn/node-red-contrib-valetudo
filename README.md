@@ -4,7 +4,7 @@
 
 ## valetudo-map-png
 
-A node to convert Valetudo map_data to a png image wich can be send to a dashboard template node.
+A node to convert Valetudo map_data (JSON string) to a png image which can be send to a dashboard template node.
 
 Input should be an mqtt node from topic `valetudo/rockrobo/map_data`.
 
@@ -19,3 +19,9 @@ HTML for template node:
     <img src="data:image/png;base64,{{msg.payload}}" style="width: 100%;height: auto" />
 </div>
 ```
+
+## valetudo-parse-binmap
+
+A node to convert Valetudo binary map data to a JSON string which can be send to the map-png node.
+
+Binary map data is currently only sent by [Valetudo RE](https://github.com/rand256/valetudo).
