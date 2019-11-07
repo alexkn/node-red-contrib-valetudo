@@ -16,7 +16,9 @@
   },
   "homepage": "https://github.com/alexkn/node-red-contrib-valetudo",
   "license": "Apache-2.0",
-  "keywords": [ "node-red" ],
+  "keywords": [
+    "node-red"
+  ],
   "node-red": {
     "nodes": {
       "valetudo-map-png": "nodes/valetudo-map-png.js",
@@ -24,6 +26,6 @@
     }
   },
   "dependencies": {
-    "jimp": "^0.6.4"
+    "jimp": "^0.8.5"
   }
 }
