@@ -52,8 +52,8 @@ module.exports = function(RED) {
     }
     RED.nodes.registerType("valetudo-map-png",ValetudoMapPngNode);
 
-    const chargerImagePath = path.join(__dirname, './assets/img/charger.png');
-    const robotImagePath = path.join(__dirname, './assets/img/robot.png');
+    const chargerImagePath = path.join(__dirname, '../assets/img/charger.png');
+    const robotImagePath = path.join(__dirname, '../assets/img/robot.png');
 
     const DIMENSION_PIXELS = 1024;
     const DIMENSION_MM = 50 * 1024;

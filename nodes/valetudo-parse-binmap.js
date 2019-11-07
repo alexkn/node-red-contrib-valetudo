@@ -1,4 +1,4 @@
-const RRMapParser = require("./lib/RRMapParser");
+const RRMapParser = require("../lib/RRMapParser");
 const zlib = require("zlib");
 
 module.exports = function(RED) {
