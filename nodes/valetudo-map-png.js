@@ -1,4 +1,6 @@
 const Tools = require("../lib/Tools");
+const Gunzip = require("../lib/Gunzip");
+const RRMapParser = require("../lib/RRMapParser");
 
 module.exports = function(RED) {
     function ValetudoMapPngNode(config) {
@@ -29,30 +31,48 @@ module.exports = function(RED) {
             settings.crop_y2 = parseInt(config.cropY2);
         }
 
-        node.on("input", function(msg) {
-            const now = new Date();
-            if(now - settings.defer > lastMapDraw) {
-                lastMapDraw = now;
-                var MapData = msg.payload;
-                if(typeof MapData === "string") {
-                    MapData = JSON.parse(MapData);
-                }
+        node.on("input", (msg) => { handleMessage(msg); });
 
+        async function handleMessage(msg) {
+            try {
+                var outputMsg = msg; 
+
+                const now = new Date();
+                if(now - settings.defer > lastMapDraw) {
+                    lastMapDraw = now;
+                    var MapData = msg.payload;
+                    if(typeof MapData === "string") {
+                        MapData = JSON.parse(MapData);
+                    }else if(Buffer.isBuffer(MapData)) {
+                        MapData = await Gunzip(MapData);
+                        MapData = RRMapParser.PARSE(MapData);
+                    }
+    
+                    var buf = await DRAW_MAP_PNG(MapData, settings);
+                    outputMsg.payload = buf;
+                    node.send(outputMsg);
+                }
+            } catch (e) {
+                node.error(e.message, msg);
+            }
+        }
+
+        function DRAW_MAP_PNG(MapData, settings) {
+            return new Promise((resolve,reject) => {
                 Tools.DRAW_MAP_PNG(
                     {
                         parsedMapData: MapData,
                         settings: settings
                     }, (err, buf) => {
                         if (!err) {
-                            msg.payload = buf;
-                            node.send(msg);
+                            resolve(buf);
                         } else {
-                            node.error(err, msg);
+                            reject(err);
                         }
                     }
                 );
-            }
-        });
+            });
+        }
     }
     RED.nodes.registerType("valetudo-map-png",ValetudoMapPngNode);
 };
