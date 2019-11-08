@@ -29,12 +29,12 @@ module.exports = function(RED) {
             settings.crop_y2 = parseInt(config.cropY2);
         }
 
-        node.on('input', function(msg) {
+        node.on("input", function(msg) {
             const now = new Date();
             if(now - settings.defer > lastMapDraw) {
                 lastMapDraw = now;
                 var MapData = msg.payload;
-                if(typeof MapData === 'string') {
+                if(typeof MapData === "string") {
                     MapData = JSON.parse(MapData);
                 }
 

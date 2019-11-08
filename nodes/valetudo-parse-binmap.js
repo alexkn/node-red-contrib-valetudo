@@ -6,7 +6,7 @@ module.exports = function(RED) {
         RED.nodes.createNode(this,config);
         var node = this;
 
-        node.on('input', function(msg) {
+        node.on("input", function(msg) {
             var mapData = msg.payload;
             new Promise((resolve,reject) => {
                 zlib.gunzip(mapData, (err, data) => {
@@ -23,4 +23,4 @@ module.exports = function(RED) {
         });
     }
     RED.nodes.registerType("valetudo-parse-binmap",ValetudoParseBinmapNode);    
-}
+};
