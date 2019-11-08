@@ -31,9 +31,18 @@ module.exports = function(RED) {
             settings.crop_y2 = parseInt(config.cropY2);
         }
 
-        node.on("input", (msg) => { handleMessage(msg); });
+        node.on("input", (msg, send, done) => {
+            send = send || function() { node.send.apply(node,arguments); }; 
+            done = done || function(err) { 
+                if(err) {
+                    node.error(err, msg);                    
+                }                
+            };
 
-        async function handleMessage(msg) {
+            handleMessage(msg, send, done); 
+        });
+
+        async function handleMessage(msg, send, done) {
             try {
                 var outputMsg = msg; 
 
@@ -50,10 +59,11 @@ module.exports = function(RED) {
     
                     var buf = await DRAW_MAP_PNG(MapData, settings);
                     outputMsg.payload = buf;
-                    node.send(outputMsg);
+                    send(outputMsg);
+                    done();
                 }
             } catch (e) {
-                node.error(e.message, msg);
+                done(e.message);
             }
         }
 

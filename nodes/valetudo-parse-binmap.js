@@ -6,9 +6,18 @@ module.exports = function(RED) {
         RED.nodes.createNode(this,config);
         var node = this;
 
-        node.on("input", (msg) => { handleMessage(msg); });
+        node.on("input", (msg, send, done) => {
+            send = send || function() { node.send.apply(node,arguments); }; 
+            done = done || function(err) { 
+                if(err) {
+                    node.error(err, msg);
+                }                
+            };
 
-        async function handleMessage(msg) {
+            handleMessage(msg, send, done); 
+        });
+
+        async function handleMessage(msg, send, done) {
             try {     
                 var outputMsg = msg;     
 
@@ -17,9 +26,10 @@ module.exports = function(RED) {
                 mapData = RRMapParser.PARSE(mapData);
                 
                 outputMsg.payload = mapData;
-                node.send(outputMsg); 
+                send(outputMsg); 
+                done();
             } catch (e) {
-                node.error(e.message, msg);
+                done(e.message);
             }
           
         }
