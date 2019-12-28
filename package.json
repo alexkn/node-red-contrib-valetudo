@@ -4,7 +4,7 @@
   "description": "Node-RED-nodes for valetudo",
   "main": "none",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint ."
   },
   "author": "Alexander Knöbel <alex-git@knoebel.info>",
   "repository": {
