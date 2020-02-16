@@ -30,5 +30,11 @@
   },
   "devDependencies": {
     "eslint": "^6.7.2"
-  }
+  },
+  "files": [
+    "/assets",
+    "/docs",
+    "/lib",
+    "/nodes"
+  ]
 }
