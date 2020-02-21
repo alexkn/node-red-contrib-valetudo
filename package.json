@@ -4,7 +4,8 @@
   "description": "Node-RED-nodes for valetudo",
   "main": "none",
   "scripts": {
-    "test": "eslint ."
+    "lint": "eslint .",
+    "test": "mocha \"test/**/*_spec.js\""
   },
   "author": "Alexander Knöbel <alex-git@knoebel.info>",
   "repository": {
@@ -29,7 +30,11 @@
     "jimp": "^0.9.3"
   },
   "devDependencies": {
-    "eslint": "^6.7.2"
+    "@types/mocha": "^7.0.1",
+    "eslint": "^6.7.2",
+    "mocha": "^7.0.1",
+    "node-red": "^1.0.3",
+    "node-red-node-test-helper": "^0.2.3"
   },
   "files": [
     "/assets",
