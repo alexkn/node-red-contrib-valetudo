@@ -10,7 +10,8 @@ module.exports = function(RED) {
         var settings = {
             drawPath: config.drawPath,
             drawCharger: config.drawCharger,
-            drawRobot: config.drawRobot
+            drawRobot: config.drawRobot,
+            defer: 2000
         };
         if(parseInt(config.scale)) {
             settings.scale = parseInt(config.scale);
@@ -32,19 +33,19 @@ module.exports = function(RED) {
         }
 
         node.on("input", (msg, send, done) => {
-            send = send || function() { node.send.apply(node,arguments); }; 
-            done = done || function(err) { 
+            send = send || function() { node.send.apply(node,arguments); };
+            done = done || function(err) {
                 if(err) {
-                    node.error(err, msg);                    
-                }                
+                    node.error(err, msg);
+                }
             };
 
-            handleMessage(msg, send, done); 
+            handleMessage(msg, send, done);
         });
 
         async function handleMessage(msg, send, done) {
             try {
-                var outputMsg = msg; 
+                var outputMsg = msg;
 
                 const now = new Date();
                 if(now - settings.defer > lastMapDraw) {
@@ -56,7 +57,7 @@ module.exports = function(RED) {
                         MapData = await Gunzip(MapData);
                         MapData = RRMapParser.PARSE(MapData);
                     }
-    
+
                     var buf = await DRAW_MAP_PNG(MapData, settings);
                     outputMsg.payload = buf;
                     send(outputMsg);
