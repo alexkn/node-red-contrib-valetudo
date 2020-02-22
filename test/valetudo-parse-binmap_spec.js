@@ -26,12 +26,18 @@ describe("valetudo-parse-binmap Node", function () {
         let n1 = helper.getNode("n1");
         let n2 = helper.getNode("n2");
         let data = await fs.readFile("./test/data/FW1886_RE0.4.0-RE7.1.bin");
-        let expectedJSON = await fs.readFile("./test/data/FW1886_RE0.4.0-RE7.1.json", { encoding: "utf-8" });
+        let expected = JSON.parse(await fs.readFile("./test/data/FW1886_RE0.4.0-RE7.1.json", { encoding: "utf-8" }));
 
         let promise = helper.createTestPromise(n1, n2);
         n1.receive({ payload: data });
         let msg = await promise;
 
-        msg.payload.should.deepEqual(JSON.parse(expectedJSON));
+        msg.payload.image.position.should.deepEqual(expected.image.position);
+        msg.payload.image.dimensions.should.deepEqual(expected.image.dimensions);
+        msg.payload.image.pixels.should.deepEqual(expected.image.pixels);
+        msg.payload.path.should.deepEqual(expected.path);
+        msg.payload.charger.should.deepEqual(expected.charger);
+        msg.payload.robot.should.deepEqual(expected.robot);
+        msg.payload.should.deepEqual(expected);
     });
 });
