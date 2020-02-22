@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.0] - 2020-02-22
+
+### Added
+
+- Support for firmware 2008 binmaps (Valetudo RE 0.9.0)
+- Unit tests for checking compatibility with different firmware versions
+
 ## [2.0.1] - 2019-12-28
 
 ### Fixed
