@@ -27,13 +27,13 @@
     }
   },
   "dependencies": {
-    "jimp": "^0.9.3"
+    "jimp": "^0.9.6"
   },
   "devDependencies": {
-    "@types/mocha": "^7.0.1",
+    "@types/mocha": "^7.0.2",
     "eslint": "^6.7.2",
-    "mocha": "^7.0.1",
-    "node-red": "^1.0.3",
+    "mocha": "^7.1.1",
+    "node-red": "^1.0.4",
     "node-red-node-test-helper": "^0.2.3"
   },
   "files": [
