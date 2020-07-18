@@ -27,14 +27,14 @@
     }
   },
   "dependencies": {
-    "jimp": "^0.9.6"
+    "jimp": "^0.14.0"
   },
   "devDependencies": {
-    "@types/mocha": "^7.0.2",
-    "eslint": "^6.7.2",
-    "mocha": "^7.1.1",
-    "node-red": "^1.0.4",
-    "node-red-node-test-helper": "^0.2.3"
+    "@types/mocha": "^8.0.0",
+    "eslint": "^7.0.2",
+    "mocha": "^8.0.1",
+    "node-red": "^1.1.2",
+    "node-red-node-test-helper": "^0.2.5"
   },
   "files": [
     "/assets",
