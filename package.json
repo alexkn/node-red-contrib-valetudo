@@ -30,9 +30,9 @@
     "jimp": "^0.14.0"
   },
   "devDependencies": {
-    "@types/mocha": "^8.0.0",
-    "eslint": "^7.0.2",
-    "mocha": "^8.0.1",
+    "@types/mocha": "^8.0.1",
+    "eslint": "^7.6.0",
+    "mocha": "^8.1.0",
     "node-red": "^1.1.2",
     "node-red-node-test-helper": "^0.2.5"
   },
