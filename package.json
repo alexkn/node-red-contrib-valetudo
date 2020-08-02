@@ -5,7 +5,8 @@
   "main": "none",
   "scripts": {
     "lint": "eslint .",
-    "test": "mocha \"test/**/*_spec.js\""
+    "test": "mocha \"test/**/*_spec.js\"",
+    "release": "standard-version"
   },
   "author": "Alexander Knöbel <alex-git@knoebel.info>",
   "repository": {
@@ -34,7 +35,8 @@
     "eslint": "^7.6.0",
     "mocha": "^8.1.0",
     "node-red": "^1.1.2",
-    "node-red-node-test-helper": "^0.2.5"
+    "node-red-node-test-helper": "^0.2.5",
+    "standard-version": "^8.0.2"
   },
   "files": [
     "/assets",
