@@ -1,11 +1,14 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [2.2.0](https://github.com/alexkn/node-red-contrib-valetudo/compare/v2.1.0...v2.2.0) (2020-08-02)
 
-## [Unreleased]
+
+### Features
+
+* support valetudo 0.6.0 map format ([308c8bd](https://github.com/alexkn/node-red-contrib-valetudo/commit/308c8bdce18682bd2a864f03ce12509b6ea80a64))
+* update robot and charger images ([0cb781d](https://github.com/alexkn/node-red-contrib-valetudo/commit/0cb781dec62c837408f33157d6b08d2901b603c4))
 
 ## [2.1.0] - 2020-02-22
 
