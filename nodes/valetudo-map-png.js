@@ -1,23 +1,27 @@
 const Tools = require("../lib/Tools");
 const Gunzip = require("../lib/Gunzip");
 const RRMapParser = require("../lib/RRMapParser");
+const MapDrawer = require("../lib/MapDrawer");
 
 module.exports = function(RED) {
     function ValetudoMapPngNode(config) {
         RED.nodes.createNode(this,config);
-        var node = this;
-        var lastMapDraw = 0;
-        var settings = {
+        let node = this;
+        let lastMapDraw = 0;
+
+        let defer = 2000;
+        if(parseInt(config.defer)) {
+            defer = parseInt(config.defer);
+        }
+
+        let settings = {
             drawPath: config.drawPath,
             drawCharger: config.drawCharger,
             drawRobot: config.drawRobot,
-            defer: 2000
+            scale: 4
         };
         if(parseInt(config.scale)) {
             settings.scale = parseInt(config.scale);
-        }
-        if(parseInt(config.defer)) {
-            settings.defer = parseInt(config.defer);
         }
         if(parseInt(config.cropX1)) {
             settings.crop_x1 = parseInt(config.cropX1);
@@ -48,8 +52,8 @@ module.exports = function(RED) {
                 var outputMsg = msg;
 
                 const now = new Date();
-                if(now - settings.defer > lastMapDraw) {
-                    lastMapDraw = now;
+                if(now.getTime() - defer > lastMapDraw) {
+                    lastMapDraw = now.getTime();
                     var MapData = msg.payload;
                     if(typeof MapData === "string") {
                         MapData = JSON.parse(MapData);
@@ -58,7 +62,13 @@ module.exports = function(RED) {
                         MapData = RRMapParser.PARSE(MapData);
                     }
 
-                    var buf = await DRAW_MAP_PNG(MapData, settings);
+                    var buf;
+                    if(MapData.__class == "ValetudoMap") {
+                        let drawer = new MapDrawer(MapData, settings);
+                        buf = await drawer.drawPng();
+                    } else {
+                        buf = await DRAW_MAP_PNG(MapData, settings);
+                    }
                     outputMsg.payload = buf;
                     send(outputMsg);
                     done();
