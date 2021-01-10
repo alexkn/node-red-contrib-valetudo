@@ -56,13 +56,22 @@ module.exports = function(RED) {
                 if(now.getTime() - defer > lastMapDraw) {
                     lastMapDraw = now.getTime();
                     var MapData = msg.payload;
+
+                    if(isBase64(MapData)) {
+                        MapData = Buffer.from(MapData, "base64");
+                    }
+
                     if(typeof MapData === "string") {
                         MapData = JSON.parse(MapData);
-                    }else if(Buffer.isBuffer(MapData)) {
+                    }
+
+                    if(Buffer.isBuffer(MapData)) {
                         try {
+                            // Valetudo
                             MapData = await Inflate(MapData);
                             MapData = JSON.parse(MapData);
                         } catch (error) {
+                            // Valetudo RE
                             MapData = await Gunzip(MapData);
                             MapData = RRMapParser.PARSE(MapData);
                         }
@@ -82,6 +91,10 @@ module.exports = function(RED) {
             } catch (e) {
                 done(e.message);
             }
+        }
+
+        function isBase64(data) {
+            return typeof data === "string" && Buffer.from(data, "base64").toString("base64") === data;
         }
 
         function DRAW_MAP_PNG(MapData, settings) {
