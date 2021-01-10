@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/alexkn/node-red-contrib-valetudo/compare/v2.2.0...v2.3.0) (2021-01-10)
+
+
+### Features
+
+* support base64 deflated JSON string map from Valetudo 2021.01.0b0 ([fa4b198](https://github.com/alexkn/node-red-contrib-valetudo/commit/fa4b1987ff37bdb439d5c8ca9aa71c3e2439dd16))
+* support deflated JSON string map from Valetudo 2021.01.0b0 ([80faa28](https://github.com/alexkn/node-red-contrib-valetudo/commit/80faa2832bcb5e348bbeb18243f8072afc47ac90))
+
 ## [2.2.0](https://github.com/alexkn/node-red-contrib-valetudo/compare/v2.1.0...v2.2.0) (2020-08-02)
 
 
