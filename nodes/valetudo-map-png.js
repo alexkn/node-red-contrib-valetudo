@@ -1,5 +1,6 @@
 const Tools = require("../lib/Tools");
 const Gunzip = require("../lib/Gunzip");
+const Inflate = require("../lib/Inflate");
 const RRMapParser = require("../lib/RRMapParser");
 const MapDrawer = require("../lib/MapDrawer");
 
@@ -58,8 +59,13 @@ module.exports = function(RED) {
                     if(typeof MapData === "string") {
                         MapData = JSON.parse(MapData);
                     }else if(Buffer.isBuffer(MapData)) {
-                        MapData = await Gunzip(MapData);
-                        MapData = RRMapParser.PARSE(MapData);
+                        try {
+                            MapData = await Inflate(MapData);
+                            MapData = JSON.parse(MapData);
+                        } catch (error) {
+                            MapData = await Gunzip(MapData);
+                            MapData = RRMapParser.PARSE(MapData);
+                        }
                     }
 
                     var buf;
