@@ -24,6 +24,7 @@
             "error",
             "unix"
         ],
+        "keyword-spacing": "error",
         "no-trailing-spaces": "error",
         "quotes": [
             "error",

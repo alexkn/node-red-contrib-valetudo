@@ -11,7 +11,7 @@ module.exports = function(RED) {
         let lastMapDraw = 0;
 
         let defer = 2000;
-        if(parseInt(config.defer)) {
+        if (parseInt(config.defer)) {
             defer = parseInt(config.defer);
         }
 
@@ -21,26 +21,26 @@ module.exports = function(RED) {
             drawRobot: config.drawRobot,
             scale: 4
         };
-        if(parseInt(config.scale)) {
+        if (parseInt(config.scale)) {
             settings.scale = parseInt(config.scale);
         }
-        if(parseInt(config.cropX1)) {
+        if (parseInt(config.cropX1)) {
             settings.crop_x1 = parseInt(config.cropX1);
         }
-        if(parseInt(config.cropX2)) {
+        if (parseInt(config.cropX2)) {
             settings.crop_x2 = parseInt(config.cropX2);
         }
-        if(parseInt(config.cropY1)) {
+        if (parseInt(config.cropY1)) {
             settings.crop_y1 = parseInt(config.cropY1);
         }
-        if(parseInt(config.cropY2)) {
+        if (parseInt(config.cropY2)) {
             settings.crop_y2 = parseInt(config.cropY2);
         }
 
         node.on("input", (msg, send, done) => {
             send = send || function() { node.send.apply(node,arguments); };
             done = done || function(err) {
-                if(err) {
+                if (err) {
                     node.error(err, msg);
                 }
             };
@@ -53,19 +53,19 @@ module.exports = function(RED) {
                 var outputMsg = msg;
 
                 const now = new Date();
-                if(now.getTime() - defer > lastMapDraw) {
+                if (now.getTime() - defer > lastMapDraw) {
                     lastMapDraw = now.getTime();
                     var MapData = msg.payload;
 
-                    if(isBase64(MapData)) {
+                    if (isBase64(MapData)) {
                         MapData = Buffer.from(MapData, "base64");
                     }
 
-                    if(typeof MapData === "string") {
+                    if (typeof MapData === "string") {
                         MapData = JSON.parse(MapData);
                     }
 
-                    if(Buffer.isBuffer(MapData)) {
+                    if (Buffer.isBuffer(MapData)) {
                         try {
                             // Valetudo
                             MapData = await Inflate(MapData);
@@ -78,7 +78,7 @@ module.exports = function(RED) {
                     }
 
                     var buf;
-                    if(MapData.__class == "ValetudoMap") {
+                    if (MapData.__class == "ValetudoMap") {
                         let drawer = new MapDrawer(MapData, settings);
                         buf = await drawer.drawPng();
                     } else {

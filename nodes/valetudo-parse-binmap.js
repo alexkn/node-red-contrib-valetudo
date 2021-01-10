@@ -9,7 +9,7 @@ module.exports = function(RED) {
         node.on("input", (msg, send, done) => {
             send = send || function() { node.send.apply(node,arguments); };
             done = done || function(err) {
-                if(err) {
+                if (err) {
                     node.error(err, msg);
                 }
             };
