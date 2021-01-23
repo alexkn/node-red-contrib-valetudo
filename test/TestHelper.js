@@ -5,7 +5,7 @@ class Helper extends NodeTestHelper.NodeTestHelper {
      * @param {*} testNode
      * @param {*} testFlow
      * @param {*} testCredentials
-     * @returns Promise<void>
+     * @returns {Promise<void>}
      */
     load(testNode, testFlow, testCredentials = {}) {
         return new Promise((resolve, reject) => {
@@ -21,18 +21,16 @@ class Helper extends NodeTestHelper.NodeTestHelper {
 
     /**
      * @param {string} id
-     * @returns {import("@node-red/runtime/lib/nodes/Node")}
+     * @returns {import("node-red").Node}
      */
-    // @ts-ignore
     getNode(id) {
-        // @ts-ignore
         return super.getNode(id);
     }
 
     /**
-     * @param {import("@node-red/runtime/lib/nodes/Node")} sendingNode
-     * @param {import("@node-red/runtime/lib/nodes/Node")} ReceivingNode
-     * @returns Promise<any>
+     * @param {import("node-red").Node} sendingNode
+     * @param {import("node-red").Node} ReceivingNode
+     * @returns {Promise<any>}
      */
     createTestPromise(sendingNode, ReceivingNode) {
         return new Promise((resolve, reject) => {
@@ -41,6 +39,7 @@ class Helper extends NodeTestHelper.NodeTestHelper {
                 clearTimeout(timeout);
                 resolve(msg);
             });
+            // @ts-ignore
             sendingNode.on("call:error", function (err) {
                 clearTimeout(timeout);
                 reject(err);

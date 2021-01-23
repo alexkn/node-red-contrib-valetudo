@@ -5,6 +5,7 @@
   "main": "none",
   "scripts": {
     "lint": "eslint .",
+    "ts-check": "tsc -p jsconfig.json",
     "test": "mocha \"test/**/*_spec.js\"",
     "release": "standard-version"
   },
@@ -32,11 +33,15 @@
   },
   "devDependencies": {
     "@types/mocha": "^8.2.0",
+    "@types/node-red": "^1.1.1",
+    "@types/node-red-node-test-helper": "^0.2.1",
+    "@types/should-sinon": "0.0.8",
     "eslint": "^7.15.0",
     "mocha": "^8.2.1",
     "node-red": "^1.2.6",
     "node-red-node-test-helper": "^0.2.5",
-    "standard-version": "^9.0.0"
+    "standard-version": "^9.0.0",
+    "typescript": "^4.1.3"
   },
   "files": [
     "/assets",
